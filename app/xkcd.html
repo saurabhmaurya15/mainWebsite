@@ -1,0 +1,6 @@
+<div class="content" style="text-align:center;">
+    <div class="card" *ngFor="#feed of feeds?.entries;#i=index">
+        <h2>{{feed.title}}</h2>
+        <div [innerHTML]="feed?.content"></div>
+    </div>
+</div>
