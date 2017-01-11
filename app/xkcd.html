@@ -1,5 +1,5 @@
 <div class="content" style="text-align:center;">
-    <div class="card" *ngFor="#feed of feeds?.entries;#i=index">
+    <div class="card" *ngFor="#feed of feeds?.items;#i=index">
         <h2>{{feed.title}}</h2>
         <div [innerHTML]="feed?.content"></div>
     </div>

@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -25,15 +27,15 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     this.http = http;
                     this._jsonp = _jsonp;
                     this.feeds = null;
-                    this.apiUrl = "http://xkcd.com/rss.xml";
+                    this.apiUrl = "http://universeofmemes.tumblr.com/rss";
                     this.zone = new core_1.NgZone({ enableLongStackTrace: false });
                     this.getRssFeed();
                 }
                 AppComponent.prototype.getRssFeed = function () {
                     var _this = this;
-                    var serviceUrl = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSONP_CALLBACK&q=' + encodeURIComponent(this.apiUrl);
-                    this._jsonp.get(serviceUrl)
-                        .map(function (res) { console.log(res._body.responseData.feed); return res._body.responseData.feed; })
+                    var serviceUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(this.apiUrl);
+                    this.http.get(serviceUrl)
+                        .map(function (res) { console.log(res.json()); return res.json(); })
                         .subscribe(function (res) {
                         _this.feeds = res;
                     });
@@ -46,7 +48,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     __metadata('design:paramtypes', [http_1.Http, http_1.Jsonp])
                 ], AppComponent);
                 return AppComponent;
-            })();
+            }());
             exports_1("AppComponent", AppComponent);
         }
     }

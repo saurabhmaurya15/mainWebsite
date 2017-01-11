@@ -10,7 +10,7 @@ import 'rxjs/Rx';
 export class AppComponent { 
 	private zone: NgZone;
 	public feeds = null;
-	public apiUrl = "http://xkcd.com/rss.xml";
+	public apiUrl = "http://universeofmemes.tumblr.com/rss";
 
 	constructor(private http: Http, private _jsonp: Jsonp){
 		this.zone = new NgZone({ enableLongStackTrace: false });
@@ -19,9 +19,9 @@ export class AppComponent {
 
 
 	getRssFeed() {
-		var serviceUrl = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSONP_CALLBACK&q=' + encodeURIComponent(this.apiUrl);
-		this._jsonp.get(serviceUrl)
-			.map(res => {console.log(res._body.responseData.feed); return res._body.responseData.feed})
+		var serviceUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(this.apiUrl);
+		this.http.get(serviceUrl)
+			.map(res => {console.log(res.json()); return res.json();})
 			.subscribe(res=> {
 				this.feeds = res;
 			});
