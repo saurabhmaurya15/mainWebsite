@@ -1,4 +1,15 @@
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <div style="margin-top: 40px;" class="menu-list">
+        <a class="menu-item" (click)="apiUrl='http://xkcd.com/rss.xml';getRssFeed();closeNav();">Home</a>
+        <a class="menu-item" (click)="apiUrl='http://universeofmemes.tumblr.com/rss';getRssFeed();closeNav();">Universe of Memes</a>
+        <a class="menu-item" (click)="apiUrl='https://sagansense.tumblr.com/rss';getRssFeed();closeNav();">Technology</a>
+        <a class="menu-item" (click)="apiUrl='http://wtffunfact.com/rss';getRssFeed();closeNav();">WTF Fun Fact</a>
+    </div>
+</div>
+<span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; Menu</span>
 <div class="content" style="text-align:center;">
+    <h1>The Most Awesome Content On the Internet</h1>
     <div class="card" *ngFor="#feed of feeds?.items;#i=index">
         <h2>{{feed.title}}</h2>
         <div [innerHTML]="feed?.content"></div>

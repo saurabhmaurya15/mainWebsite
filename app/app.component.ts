@@ -10,7 +10,7 @@ import 'rxjs/Rx';
 export class AppComponent { 
 	private zone: NgZone;
 	public feeds = null;
-	public apiUrl = "http://universeofmemes.tumblr.com/rss";
+	public apiUrl = "http://xkcd.com/rss.xml";
 
 	constructor(private http: Http, private _jsonp: Jsonp){
 		this.zone = new NgZone({ enableLongStackTrace: false });
@@ -25,6 +25,14 @@ export class AppComponent {
 			.subscribe(res=> {
 				this.feeds = res;
 			});
+	}
+
+	openNav() {
+    	document.getElementById("mySidenav").style.width = "250px";
+	}
+
+	closeNav() {
+	    document.getElementById("mySidenav").style.width = "0";
 	}
 
 }

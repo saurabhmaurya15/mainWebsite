@@ -27,7 +27,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     this.http = http;
                     this._jsonp = _jsonp;
                     this.feeds = null;
-                    this.apiUrl = "http://universeofmemes.tumblr.com/rss";
+                    this.apiUrl = "http://xkcd.com/rss.xml";
                     this.zone = new core_1.NgZone({ enableLongStackTrace: false });
                     this.getRssFeed();
                 }
@@ -39,6 +39,12 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                         .subscribe(function (res) {
                         _this.feeds = res;
                     });
+                };
+                AppComponent.prototype.openNav = function () {
+                    document.getElementById("mySidenav").style.width = "250px";
+                };
+                AppComponent.prototype.closeNav = function () {
+                    document.getElementById("mySidenav").style.width = "0";
                 };
                 AppComponent = __decorate([
                     core_1.Component({
