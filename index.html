@@ -49,13 +49,15 @@
     </script>
 </head>
 
-<body style="background:aliceblue">
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8QVC87" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <my-app></my-app>
+    <my-app>
+    	<div class="loader" *ngIf="isLoading">Loading...</div>
+    </my-app>
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
     var Tawk_API = Tawk_API || {},

@@ -28,16 +28,20 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     this._jsonp = _jsonp;
                     this.feeds = null;
                     this.apiUrl = "http://xkcd.com/rss.xml";
+                    this.isLoading = false;
                     this.zone = new core_1.NgZone({ enableLongStackTrace: false });
                     this.getRssFeed();
                 }
                 AppComponent.prototype.getRssFeed = function () {
                     var _this = this;
+                    this.isLoading = true;
+                    this.feeds = null;
                     var serviceUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(this.apiUrl);
                     this.http.get(serviceUrl)
                         .map(function (res) { console.log(res.json()); return res.json(); })
                         .subscribe(function (res) {
                         _this.feeds = res;
+                        _this.isLoading = false;
                     });
                 };
                 AppComponent.prototype.openNav = function () {

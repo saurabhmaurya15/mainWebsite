@@ -11,6 +11,7 @@ export class AppComponent {
 	private zone: NgZone;
 	public feeds = null;
 	public apiUrl = "http://xkcd.com/rss.xml";
+	public isLoading = false;
 
 	constructor(private http: Http, private _jsonp: Jsonp){
 		this.zone = new NgZone({ enableLongStackTrace: false });
@@ -19,11 +20,14 @@ export class AppComponent {
 
 
 	getRssFeed() {
+		this.isLoading = true;
+		this.feeds = null;
 		var serviceUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(this.apiUrl);
 		this.http.get(serviceUrl)
 			.map(res => {console.log(res.json()); return res.json();})
 			.subscribe(res=> {
 				this.feeds = res;
+				this.isLoading = false;
 			});
 	}
 
