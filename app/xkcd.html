@@ -17,7 +17,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="col-sm-8 col-sm-offset-2 col-centered">
+        <div class="col-sm-8 col-sm-offset-2 col-centered" style="overflow:scroll;">
             <div class="card" *ngFor="#feed of feeds?.items;#i=index">
                 <h2>{{feed?.title}}</h2>
                 <div [innerHTML]="feed?.content"></div>
