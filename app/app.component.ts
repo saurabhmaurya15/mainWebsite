@@ -28,6 +28,13 @@ export class AppComponent {
 			.map(res => {console.log(res.json()); return res.json();})
 			.subscribe(res=> {
 				this.feeds = res;
+				if(this.feeds && this.feeds.items){
+					var max = this.feeds.items.length;
+					if(max > 5) {
+						var startIndex = Math.floor(Math.random() * (max - 5)) + 0;
+						this.feeds.items = this.feeds.items.splice(startIndex, 5);
+					}
+				}
 				this.isLoading = false;
 			});
 	}

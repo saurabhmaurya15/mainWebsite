@@ -42,6 +42,13 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                         .map(function (res) { console.log(res.json()); return res.json(); })
                         .subscribe(function (res) {
                         _this.feeds = res;
+                        if (_this.feeds && _this.feeds.items) {
+                            var max = _this.feeds.items.length;
+                            if (max > 5) {
+                                var startIndex = Math.floor(Math.random() * (max - 5)) + 0;
+                                _this.feeds.items = _this.feeds.items.splice(startIndex, 5);
+                            }
+                        }
                         _this.isLoading = false;
                     });
                 };
