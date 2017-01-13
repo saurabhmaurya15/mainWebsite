@@ -1,18 +1,39 @@
-<div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-    <div style="margin-top: 40px;" class="menu-list">
-        <a class="menu-item" (click)="apiUrl='http://xkcd.com/rss.xml';getRssFeed();closeNav();">Home</a>
-        <a class="menu-item" (click)="apiUrl='http://universeofmemes.tumblr.com/rss';getRssFeed();closeNav();">Universe of Memes</a>
-        <a class="menu-item" (click)="apiUrl='https://sagansense.tumblr.com/rss';getRssFeed();closeNav();">Technology</a>
-        <a class="menu-item" (click)="apiUrl='http://wtffunfact.com/rss';getRssFeed();closeNav();">WTF Fun Fact</a>
+<div class="container main-ctr">
+    <div class="row heading">
+        <div class="col-sm-12 col-centered">
+            <h1>The Most Awesome Content On the Internet</h1>
+        </div>
     </div>
-</div>
-<span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; Menu</span>
-<div class="content" style="text-align:center;">
-    <h1>The Most Awesome Content On the Internet</h1>
-    <div class="card" *ngFor="#feed of feeds?.items;#i=index">
-        <h2>{{feed?.title}}</h2>
-        <div [innerHTML]="feed?.content"></div>
+    <div class="row">
+        <div class="col-sm-2 left-menu">
+            <nav class="nav-sidebar">
+                <ul class="nav">
+                    <li [ngClass]="selected == 'Home' ? 'active':''"><a (click)="selected='Home';apiUrl='http://xkcd.com/rss.xml';getRssFeed();">Home</a></li>
+                    <li [ngClass]="selected == 'Universe of Memes' ? 'active':''"><a (click)="selected='Universe of Memes';apiUrl='http://universeofmemes.tumblr.com/rss';getRssFeed();">Universe of Memes</a></li>
+                    <li [ngClass]="selected == 'Technology' ? 'active':''"><a (click)="selected='Technology';apiUrl='https://sagansense.tumblr.com/rss';getRssFeed();">Technology</a></li>
+                    <li [ngClass]="selected == 'WTF Fun Fact' ? 'active':''"><a (click)="selected='WTF Fun Fact';apiUrl='http://wtffunfact.com/rss';getRssFeed();">WTF Fun Fact</a></li>
+                    <!-- <li class="nav-divider"></li>
+                    <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li> -->
+                </ul>
+            </nav>
+        </div>
+        <div class="col-sm-8 col-sm-offset-2 col-centered">
+            <div class="card" *ngFor="#feed of feeds?.items;#i=index">
+                <h2>{{feed?.title}}</h2>
+                <div [innerHTML]="feed?.content"></div>
+            </div>
+            <div class="loader" *ngIf="isLoading">Loading...</div>
+        </div>
+        <div class="col-sm-2 right-menu">
+            <nav class="nav-sidebar pull-right">
+                <ul class="nav">
+                    <li class="active"><a href="javascript:;">{{selected}}</a></li>
+                    <li><a href="javascript:;">This site is the best place to enjoy the most awesome latest photos, quotes, links, music,videos, digital trends, and breaking news (...okay, and maybe cats) from all over the internet.</a></li>
+                    <li class="nav-divider"></li>
+                    <li style="padding-left:14px;"><i class="glyphicon glyphicon-info-sign"></i> Looking for something else?</li>
+                    <p style="padding-left:14px;">Tell us what you want through chat option below.</p>
+                </ul>
+            </nav>
+        </div>
     </div>
-    <div class="loader" *ngIf="isLoading">Loading...</div>
 </div>

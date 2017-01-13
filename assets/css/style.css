@@ -1,53 +1,81 @@
 body {
     font-family: "Lato", sans-serif;
-    background: ghostwhite;
+    font-family: monospace;
+}
+.main-ctr {
+  width: auto;
+}
+.heading {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.col-centered{
+    text-align: center;
+}
+.left-menu {
+  position: fixed;
+}
+.right-menu {
+  position: fixed;
+  right:0;
+}
+.nav-sidebar { 
+    width: 100%;
+    padding: 8px 0; 
+    border-right: 1px solid #ddd;
+}
+.nav-sidebar a {
+    color: #333;
+    -webkit-transition: all 0.08s linear;
+    -moz-transition: all 0.08s linear;
+    -o-transition: all 0.08s linear;
+    transition: all 0.08s linear;
+    -webkit-border-radius: 4px 0 0 4px; 
+    -moz-border-radius: 4px 0 0 4px; 
+    border-radius: 4px 0 0 4px; 
+}
+.nav-sidebar .active a { 
+    cursor: default;
+    background-color: #428bca; 
+    color: #fff; 
+    text-shadow: 1px 1px 1px #666; 
+}
+.nav-sidebar .active a:hover {
+    background-color: #428bca;   
+}
+.nav-sidebar .text-overflow a,
+.nav-sidebar .text-overflow .media-body {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis; 
+}
+
+/* Right-aligned sidebar */
+.nav-sidebar.pull-right { 
+    border-right: 0; 
+    border-left: 1px solid #ddd;
+    pointer-events: none;
+}
+.nav-sidebar.pull-right a {
+    -webkit-border-radius: 0 4px 4px 0; 
+    -moz-border-radius: 0 4px 4px 0; 
+    border-radius: 0 4px 4px 0; 
+}
+
+.nav li {
+  cursor: pointer;
+}
+.nav.active {
+  pointer-events: none;
 }
 
 h1 {
-    color: darkblue;
-}
-
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    display: block;
-    transition: 0.3s
-}
-
-.sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-.menu-item {
-    cursor: pointer;
-}
-.menu-list a:hover{
     color: black;
-    background: aliceblue;
+    font-family: cursive;
+
 }
+
 
 .card{
     margin-top: 65px;
@@ -58,18 +86,18 @@ h1 {
 .loader,
 .loader:before,
 .loader:after {
-  background: cadetblue;
+  background: black;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 4em;
 }
 .loader {
-  color: cadetblue;
+  color: black;
   text-indent: -9999em;
   margin: 88px auto;
   position: relative;
-  font-size: 11px;
+  font-size: 6px;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
@@ -113,9 +141,4 @@ h1 {
     box-shadow: 0 -2em;
     height: 5em;
   }
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
 }

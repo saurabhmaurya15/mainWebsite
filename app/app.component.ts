@@ -12,6 +12,7 @@ export class AppComponent {
 	public feeds = null;
 	public apiUrl = "http://xkcd.com/rss.xml";
 	public isLoading = false;
+	public selected = 'Home';
 
 	constructor(private http: Http, private _jsonp: Jsonp){
 		this.zone = new NgZone({ enableLongStackTrace: false });
@@ -29,14 +30,6 @@ export class AppComponent {
 				this.feeds = res;
 				this.isLoading = false;
 			});
-	}
-
-	openNav() {
-    	document.getElementById("mySidenav").style.width = "250px";
-	}
-
-	closeNav() {
-	    document.getElementById("mySidenav").style.width = "0";
 	}
 
 }

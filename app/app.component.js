@@ -29,6 +29,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     this.feeds = null;
                     this.apiUrl = "http://xkcd.com/rss.xml";
                     this.isLoading = false;
+                    this.selected = 'Home';
                     this.zone = new core_1.NgZone({ enableLongStackTrace: false });
                     this.getRssFeed();
                 }
@@ -43,12 +44,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                         _this.feeds = res;
                         _this.isLoading = false;
                     });
-                };
-                AppComponent.prototype.openNav = function () {
-                    document.getElementById("mySidenav").style.width = "250px";
-                };
-                AppComponent.prototype.closeNav = function () {
-                    document.getElementById("mySidenav").style.width = "0";
                 };
                 AppComponent = __decorate([
                     core_1.Component({
